@@ -166,3 +166,60 @@ print(S)
 template = 'Hello {name}!'
 stringF = template.format(name='World')
 print(stringF)
+
+# NOTE: List append/sort modify object in-place
+# DO NOT assing list to ret value of these operations
+# ex: L.sort() sorts L in-place returns None
+
+L = [1, 2, 3]
+#in-place reversal
+L.reverse()
+#returns reversed list w/out modifying L
+L2 = list( reversed(L) )
+
+# Push onto back
+L.append(0)
+L.append(-1)
+# Pop off and return back
+neg1 = L.pop()
+
+print(L)
+print(neg1)
+
+# Insertion
+L = [1,4,5]
+L[1:1] = [2,3]
+print(L)
+
+# Replacement
+L = [1,4,5]
+L[1:3] = [2,3]
+print(L)
+
+# Deletion
+L = [1,4,5]
+L[1:3] = []
+print(L)
+
+# Dicts often used to implement sparse data structures
+ 
+# Dict with tuple keys
+Matrix = {}
+Matrix[(0,0,0)] = 0
+Matrix[0,0,4] = 1
+# ...
+
+# Error checking
+#  Using if statement
+if (0,0,0) in Matrix:
+    print(Matrix[(0,0,0)])
+
+#  Try catch block
+try: 
+    print(Matrix[(0,0,0)])
+except KeyError:
+    print(0)
+
+#  Gets val or returns 0
+Matrix.get((0,0,0), 0)
+
