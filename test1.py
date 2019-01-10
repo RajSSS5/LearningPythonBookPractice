@@ -10,7 +10,10 @@ L = [123, 'spam', 1.23]
 #print(L)
 #L.sort()
 #print(L)
+s= '1 2 3'
+s.split()
 
+print(L.index(123)) #Gives error if not found, use in try, catch
 # Matrix/List comprehensions
 M = [[1, 2, 3], [4, 5, 6], [7,8,9]] 
 print([row[1] for row in M if row[1] % 2 == 0])
@@ -40,6 +43,9 @@ print({n ** 2 for n in [1,2,3,4]}) # ** = exponentiation
 print('f' in X, 'f' in Y)
 print( 1.0 / 3.0)
 
+
+
+#reduce(lambda parameter_list: expression)
 #Fractions
 f = Fraction(2,3)
 print(f + 1)
@@ -223,3 +229,7 @@ except KeyError:
 #  Gets val or returns 0
 Matrix.get((0,0,0), 0)
 
+a = 1
+b = 2
+# Swap Values
+a, b = b, a
