@@ -17,6 +17,7 @@ print(L.index(123)) #Gives error if not found, use in try, catch
 # Matrix/List comprehensions
 M = [[1, 2, 3], [4, 5, 6], [7,8,9]] 
 print([row[1] for row in M if row[1] % 2 == 0])
+# Diagonal
 print([M[i][i] for i in range( len(M) ) ])
 
 # Generator
@@ -233,3 +234,65 @@ a = 1
 b = 2
 # Swap Values
 a, b = b, a
+
+# Changes only L
+L = [1, 2]
+M = L
+L = L + [3,4]
+
+# Changes both, bc += auto chooses in-place
+L = [1, 2]
+M = L
+L += [3,4]
+
+test = True
+i = 0
+while test:
+    if i > 0: 
+        break
+    i += 1
+else: 
+    # This else only executes if the loop executes normally (no break)
+    print('Hello')
+
+# Files are their own iterators
+
+# f = open('sample.py')
+# iter(f) is f
+#  True
+
+# Lists/other built-ins are not, support multiple iterations
+
+# Comprehensions
+
+
+#  List Comprehensions make a new list, rather than in-place changes
+#  Run at C language speed, so often faster than for loop
+
+[x + y for x in 'spam' for y in 'eggs']
+
+
+# Easy for loop question
+# Write a for loop that prints the ascii code of each char in a string
+s = "aaaa"
+for char in s:
+    print(ord(char))
+
+# Print dict items in sorted order using a for loop
+D = {4: 's', 3: 'p', 2: 'a', 1: 'm'}
+for key in sorted(D):
+    print(key)
+
+# LEGB scoping lookup 
+#   Local, Enclosures (ex: def), Global, Built-ins
+
+# Closure example
+def catString(s):
+    def action(s2):
+        return s2 + s
+    return action
+
+addSpam = catString('spam')
+
+needLots = addSpam("I need lots of ")
+print(needLots)
