@@ -296,3 +296,103 @@ addSpam = catString('spam')
 
 needLots = addSpam("I need lots of ")
 print(needLots)
+
+
+# Lambda version
+def lamCatString(s):
+    action = (lambda s2: s2 + s)
+    return action
+
+addSpam = lamCatString('spam!')
+
+needLots = addSpam("I need lots of ")
+
+print(needLots)
+
+
+# Using function attributes
+def attrCatString(s):
+    def action(s2):
+        return s2 + action.s1
+    # Atributes not needed here, but illustrates concept
+    action.s1 = s               
+    return action
+
+addSpam = attrCatString('spam!!!')
+
+needLots = addSpam("I need lots of ")
+
+print(needLots)
+
+
+# Collects uncaught args
+def printAsMany( *args):
+    print(args)
+
+printAsMany(1,2,3,4,5,6,7)
+
+# Collects uncaught keyword args into dict
+# NOTE: ** must go last
+def printAsManyDict(**args):
+    print(args)
+
+printAsManyDict(a=1,b=2,c=3)
+
+
+# Alternative use of * in call
+
+def func(a,b,c,d):
+    print( a + b + c + d)
+
+args = (1,1,1,1)
+func(*args)
+
+# Example of using * in arg
+def min1(first, *rest):
+    for arg in rest:
+        if arg < first:
+            first = arg
+        return first
+def max1(first, *rest):
+    for arg in rest:
+        if arg > first:
+            first = arg
+        return first
+
+def min2(*args):
+    tmp = list(args)
+    tmp.sort
+    return tmp[0]
+
+def max2(*args):
+    tmp = list(args)
+    tmp.sort(reverse=True)
+    return tmp[0]
+
+def min3(*args):
+    res = args[0]
+    for arg in args[1:]:
+        if res > arg:
+            res = arg
+    return res
+def max3(*args):
+    res = args[0]
+    for arg in args[1:]:
+        if res < arg:
+            res = arg
+    return res
+
+# Higher order programming example
+def minmax(test, *args):
+    res = args[0]
+    for arg in args[1:]:
+        if test(arg, res):
+            res = arg
+    return res
+
+def lessthanrel(x,y): return x < y
+
+# Pass in test = lt operator
+print(minmax(lessthanrel, 1,2,3,4))
+# Pass in gt operator with lambda expr.
+print(minmax(lambda x,y: x > y, 1,2,3,4)  )
