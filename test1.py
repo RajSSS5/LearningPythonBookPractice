@@ -413,7 +413,6 @@ print(sumtree(L))
 
 # Bredth-first 
 def BFS(L, item):
-    tot = 0
     items = list(L) 
     while items:
         front = items.pop(0)
@@ -426,3 +425,16 @@ def BFS(L, item):
 print(BFS(L, 3))
 print(BFS(L, 9))
 # Depth-first
+
+def DFS(L, item):
+    items = list(L) 
+    while items:
+        front = items.pop(0)
+        if not isinstance(front, list): 
+            if front == item:
+                return True
+        else: 
+            items[:0] = front
+    return False
+print(DFS(L, 3))
+print(DFS(L, 9))
