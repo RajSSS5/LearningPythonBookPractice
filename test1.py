@@ -441,3 +441,30 @@ def DFS(L, item):
     return False
 print(DFS(L, 3))
 print(DFS(L, 9))
+
+
+# Uses closure concept to remember x
+def action(x):
+    return (lambda y: x + y)
+
+act = action(100)
+print(act(5))
+
+
+# Lambda functions often used in callbacks, defer execution of handler
+# until certain event occurs/not creatuin
+
+# Python supports first class functions/objects
+
+# Map function example
+notSquared = [1, 2, 3]
+Squared = map(lambda x: x ** 2, notSquared)
+print(Squared)
+
+# Filter using filter function example
+notFiltered = [1,2,3,4,5]
+oddFiltered = filter(lambda x: x % 2 == 0, notFiltered)
+print(oddFiltered)
+
+# Filter with list comp
+print([x for x in notFiltered if x % 2 == 0])
