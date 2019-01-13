@@ -411,6 +411,9 @@ L = [1, [2, [3, 4], 5], 6, [7, 8]]
 
 print(sumtree(L))
 
+# NOTE: The below implementations for DFS/BFS work on nested lists, 
+#       They are not intended for objects which can be cyclic graphs
+#
 # Bredth-first 
 def BFS(L, item):
     items = list(L) 
@@ -420,7 +423,7 @@ def BFS(L, item):
             if front == item:
                 return True
         else: 
-            items.extend(front) 
+            items.extend(front) # Enque
     return False
 print(BFS(L, 3))
 print(BFS(L, 9))
@@ -434,7 +437,7 @@ def DFS(L, item):
             if front == item:
                 return True
         else: 
-            items[:0] = front
+            items[:0] = front   # Push onto front
     return False
 print(DFS(L, 3))
 print(DFS(L, 9))
