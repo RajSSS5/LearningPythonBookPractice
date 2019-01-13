@@ -410,3 +410,19 @@ def sumtree(L):
 L = [1, [2, [3, 4], 5], 6, [7, 8]]
 
 print(sumtree(L))
+
+# Bredth-first 
+def BFS(L, item):
+    tot = 0
+    items = list(L) 
+    while items:
+        front = items.pop(0)
+        if not isinstance(front, list): 
+            if front == item:
+                return True
+        else: 
+            items.extend(front) 
+    return False
+print(BFS(L, 3))
+print(BFS(L, 9))
+# Depth-first
