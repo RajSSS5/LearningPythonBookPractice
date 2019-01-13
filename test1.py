@@ -396,3 +396,17 @@ def lessthanrel(x,y): return x < y
 print(minmax(lessthanrel, 1,2,3,4))
 # Pass in gt operator with lambda expr.
 print(minmax(lambda x,y: x > y, 1,2,3,4)  )
+
+# Sum recursively over nested list
+def sumtree(L):
+    tot = 0
+    for x in L:
+        if not isinstance(x, list):
+            tot += x
+        else:
+            tot += sumtree(x)
+    return tot
+
+L = [1, [2, [3, 4], 5], 6, [7, 8]]
+
+print(sumtree(L))
